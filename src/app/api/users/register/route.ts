@@ -2,11 +2,7 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';
-
-// Temporary in-memory store for pending registrations
-const pendingRegistrations: {
-  [email: string]: { hashedPassword: string; code: string; expires: number };
-} = {};
+import { pendingRegistrations } from '@/lib/pendingRegistrations';
 
 export async function POST(req: Request) {
   try {
@@ -56,6 +52,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, message: 'Server Error' }, { status: 500 });
   }
 }
-
-// Export the pendingRegistrations for use in verify route
-export { pendingRegistrations };
