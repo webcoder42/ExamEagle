@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';
 import { pendingRegistrations } from '@/lib/pendingRegistrations';
 
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
